@@ -1,5 +1,7 @@
 <meta http-equiv="refresh" content="5; URL=localhost:8888">
 <?php
+error_reporting(-1);
+ini_set('display_errors', 'On');
 
 
 class Device{
@@ -62,6 +64,36 @@ $mikrofons = new Microphone();
 $mikrofons->setYear(2016);
 $mikrofons->setManufacturer("Samsung");
 print($mikrofons->getFullInfo());
+
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$db = "sveiksSQL";
+try {
+    $conn = mysqli_connect($servername, $username, $password, $db);
+	$sql = "SELECT * FROM `microphones`
+	WHERE ID=1";
+	$result = $conn->query($sql);
+	var_dump($result);
+		if($result->num_rows>0){
+			echo('Ir rezultāts');
+			while($row= $result->fetch_assoc()){
+				var_dump($row);
+			}
+	}
+		else{
+			echo("Nav rezultāts");
+	}	
+	
+
+	mysqli_close($conn);
+    }
+catch(PDOException $e)
+    {
+    echo "Connection failed: " . $e->getMessage();
+    }
+
+
 
 
 
