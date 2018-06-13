@@ -3,7 +3,7 @@
 
 <head> 
     <title>Diena 6: html</title>
-<meta charset="utf-8"
+<meta charset="utf-8">
 
 </head>
 
